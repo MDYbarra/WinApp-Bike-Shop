@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoursemoModelStoreContainer" CdmEntityContainer="CoursemoEntities">
+    <EntitySetMapping Name="Courses">
+      <EntityTypeMapping TypeName="CoursemoModel.Cours">
+        <MappingFragment StoreEntitySet="Courses">
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="CourseNum" ColumnName="CourseNum" />
+          <ScalarProperty Name="Semester" ColumnName="Semester" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="CRN" ColumnName="CRN" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="MeetingTime" ColumnName="MeetingTime" />
+          <ScalarProperty Name="ClassSize" ColumnName="ClassSize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enrolleds">
+      <EntityTypeMapping TypeName="CoursemoModel.Enrolled">
+        <MappingFragment StoreEntitySet="Enrolled">
+          <ScalarProperty Name="EID" ColumnName="EID" />
+          <ScalarProperty Name="NetId" ColumnName="NetId" />
+          <ScalarProperty Name="CRN" ColumnName="CRN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="CoursemoModel.Student">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="NetId" ColumnName="NetId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Waitlists">
+      <EntityTypeMapping TypeName="CoursemoModel.Waitlist">
+        <MappingFragment StoreEntitySet="Waitlist">
+          <ScalarProperty Name="WID" ColumnName="WID" />
+          <ScalarProperty Name="NetId" ColumnName="NetId" />
+          <ScalarProperty Name="CRN" ColumnName="CRN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

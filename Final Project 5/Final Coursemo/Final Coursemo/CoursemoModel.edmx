@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CoursemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CRN" />
+          </Key>
+          <Property Name="Dept" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="CourseNum" Type="smallint" Nullable="false" />
+          <Property Name="Semester" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Year" Type="smallint" Nullable="false" />
+          <Property Name="CRN" Type="int" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="MeetingTime" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="ClassSize" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enrolled">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NetId" Type="nvarchar" MaxLength="64" />
+          <Property Name="CRN" Type="int" />
+        </EntityType>
+        <EntityType Name="Students">
+          <Key>
+            <PropertyRef Name="NetId" />
+          </Key>
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="NetId" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Waitlist">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NetId" Type="nvarchar" MaxLength="64" />
+          <Property Name="CRN" Type="int" />
+        </EntityType>
+        <Association Name="FK__Enrolled__CRN__5C8CB268">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Enrolled" Type="Self.Enrolled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CRN" />
+            </Principal>
+            <Dependent Role="Enrolled">
+              <PropertyRef Name="CRN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Enrolled__NetId__5B988E2F">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Enrolled" Type="Self.Enrolled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="NetId" />
+            </Principal>
+            <Dependent Role="Enrolled">
+              <PropertyRef Name="NetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Waitlist__CRN__605D434C">
+          <End Role="Courses" Type="Self.Courses" Multiplicity="0..1" />
+          <End Role="Waitlist" Type="Self.Waitlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CRN" />
+            </Principal>
+            <Dependent Role="Waitlist">
+              <PropertyRef Name="CRN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Waitlist__NetId__5F691F13">
+          <End Role="Students" Type="Self.Students" Multiplicity="0..1" />
+          <End Role="Waitlist" Type="Self.Waitlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="NetId" />
+            </Principal>
+            <Dependent Role="Waitlist">
+              <PropertyRef Name="NetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoursemoModelStoreContainer">
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enrolled" EntityType="Self.Enrolled" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Students" EntityType="Self.Students" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Waitlist" EntityType="Self.Waitlist" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Enrolled__CRN__5C8CB268" Association="Self.FK__Enrolled__CRN__5C8CB268">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrolled" EntitySet="Enrolled" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Enrolled__NetId__5B988E2F" Association="Self.FK__Enrolled__NetId__5B988E2F">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Enrolled" EntitySet="Enrolled" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Waitlist__CRN__605D434C" Association="Self.FK__Waitlist__CRN__605D434C">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Waitlist" EntitySet="Waitlist" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Waitlist__NetId__5F691F13" Association="Self.FK__Waitlist__NetId__5F691F13">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Waitlist" EntitySet="Waitlist" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CoursemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="CRN" />
+          </Key>
+          <Property Name="Dept" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CourseNum" Type="Int16" Nullable="false" />
+          <Property Name="Semester" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Year" Type="Int16" Nullable="false" />
+          <Property Name="CRN" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Day" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MeetingTime" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClassSize" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Enrolleds" Relationship="Self.FK__Enrolled__CRN__5C8CB268" FromRole="Courses" ToRole="Enrolled" />
+          <NavigationProperty Name="Waitlists" Relationship="Self.FK__Waitlist__CRN__605D434C" FromRole="Courses" ToRole="Waitlist" />
+        </EntityType>
+        <EntityType Name="Enrolled">
+          <Key>
+            <PropertyRef Name="EID" />
+          </Key>
+          <Property Name="EID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NetId" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CRN" Type="Int32" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK__Enrolled__CRN__5C8CB268" FromRole="Enrolled" ToRole="Courses" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Enrolled__NetId__5B988E2F" FromRole="Enrolled" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="NetId" />
+          </Key>
+          <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NetId" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Enrolleds" Relationship="Self.FK__Enrolled__NetId__5B988E2F" FromRole="Students" ToRole="Enrolled" />
+          <NavigationProperty Name="Waitlists" Relationship="Self.FK__Waitlist__NetId__5F691F13" FromRole="Students" ToRole="Waitlist" />
+        </EntityType>
+        <EntityType Name="Waitlist">
+          <Key>
+            <PropertyRef Name="WID" />
+          </Key>
+          <Property Name="WID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NetId" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="CRN" Type="Int32" />
+          <NavigationProperty Name="Cours" Relationship="Self.FK__Waitlist__CRN__605D434C" FromRole="Waitlist" ToRole="Courses" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Waitlist__NetId__5F691F13" FromRole="Waitlist" ToRole="Students" />
+        </EntityType>
+        <Association Name="FK__Enrolled__CRN__5C8CB268">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="0..1" />
+          <End Role="Enrolled" Type="Self.Enrolled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CRN" />
+            </Principal>
+            <Dependent Role="Enrolled">
+              <PropertyRef Name="CRN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Waitlist__CRN__605D434C">
+          <End Role="Courses" Type="Self.Cours" Multiplicity="0..1" />
+          <End Role="Waitlist" Type="Self.Waitlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Courses">
+              <PropertyRef Name="CRN" />
+            </Principal>
+            <Dependent Role="Waitlist">
+              <PropertyRef Name="CRN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Enrolled__NetId__5B988E2F">
+          <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Enrolled" Type="Self.Enrolled" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="NetId" />
+            </Principal>
+            <Dependent Role="Enrolled">
+              <PropertyRef Name="NetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Waitlist__NetId__5F691F13">
+          <End Role="Students" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Waitlist" Type="Self.Waitlist" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="NetId" />
+            </Principal>
+            <Dependent Role="Waitlist">
+              <PropertyRef Name="NetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CoursemoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="Enrolleds" EntityType="Self.Enrolled" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Waitlists" EntityType="Self.Waitlist" />
+          <AssociationSet Name="FK__Enrolled__CRN__5C8CB268" Association="Self.FK__Enrolled__CRN__5C8CB268">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Enrolled" EntitySet="Enrolleds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Waitlist__CRN__605D434C" Association="Self.FK__Waitlist__CRN__605D434C">
+            <End Role="Courses" EntitySet="Courses" />
+            <End Role="Waitlist" EntitySet="Waitlists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Enrolled__NetId__5B988E2F" Association="Self.FK__Enrolled__NetId__5B988E2F">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Enrolled" EntitySet="Enrolleds" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Waitlist__NetId__5F691F13" Association="Self.FK__Waitlist__NetId__5F691F13">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Waitlist" EntitySet="Waitlists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CoursemoModelStoreContainer" CdmEntityContainer="CoursemoEntities">
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="CoursemoModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
+                <ScalarProperty Name="CourseNum" ColumnName="CourseNum" />
+                <ScalarProperty Name="Semester" ColumnName="Semester" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="CRN" ColumnName="CRN" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="MeetingTime" ColumnName="MeetingTime" />
+                <ScalarProperty Name="ClassSize" ColumnName="ClassSize" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enrolleds">
+            <EntityTypeMapping TypeName="CoursemoModel.Enrolled">
+              <MappingFragment StoreEntitySet="Enrolled">
+                <ScalarProperty Name="EID" ColumnName="EID" />
+                <ScalarProperty Name="NetId" ColumnName="NetId" />
+                <ScalarProperty Name="CRN" ColumnName="CRN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="CoursemoModel.Student">
+              <MappingFragment StoreEntitySet="Students">
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="NetId" ColumnName="NetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Waitlists">
+            <EntityTypeMapping TypeName="CoursemoModel.Waitlist">
+              <MappingFragment StoreEntitySet="Waitlist">
+                <ScalarProperty Name="WID" ColumnName="WID" />
+                <ScalarProperty Name="NetId" ColumnName="NetId" />
+                <ScalarProperty Name="CRN" ColumnName="CRN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

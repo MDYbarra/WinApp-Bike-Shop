@@ -1,0 +1,17 @@
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\Coursemo.mdf
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\Coursemo_log.ldf
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\Final Coursemo.exe.config
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\Final Coursemo.exe
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\Final Coursemo.pdb
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\EntityFramework.dll
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\EntityFramework.xml
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final Coursemo.csprojAssemblyReference.cache
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final_Coursemo.Form1.resources
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final_Coursemo.Properties.Resources.resources
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final Coursemo.csproj.GenerateResource.cache
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final Coursemo.csproj.CoreCompileInputs.cache
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final Coursemo.csproj.CopyComplete
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final Coursemo.exe
+C:\Users\MyKey\Desktop\Final Coursemo\Final Coursemo\obj\Debug\Final Coursemo.pdb
